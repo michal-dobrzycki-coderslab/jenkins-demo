@@ -1,10 +1,10 @@
-package com.example.web;
+package pl.coderslab.jenkins.web;
 
-import com.example.exception.ToDoException;
-import com.example.model.Response;
-import com.example.model.ToDo;
-import com.example.service.ToDoService;
-import com.example.util.PayloadValidator;
+import pl.coderslab.jenkins.exception.ToDoException;
+import pl.coderslab.jenkins.model.Response;
+import pl.coderslab.jenkins.model.ToDo;
+import pl.coderslab.jenkins.service.ToDoService;
+import pl.coderslab.jenkins.util.PayloadValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class ToDoController {
     @RequestMapping(value = "/todo", method = RequestMethod.GET)
     public ResponseEntity<List<ToDo>> getAllToDo() {
         logger.info("Returning all the ToDo´s");
-        return new ResponseEntity<List<ToDo>>(toDoService.getAllToDo(), HttpStatus.OK);
+        return new ResponseEntity<>(toDoService.getAllToDo(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/todo/{id}", method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class ToDoController {
         if (!toDoOpt.isPresent()) {
             throw new ToDoException("ToDo doesn´t exist");
         }
-        return new ResponseEntity<ToDo>(toDo, HttpStatus.OK);
+        return new ResponseEntity<>(toDo, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/todo/{id}", method = RequestMethod.DELETE)
@@ -49,7 +49,7 @@ public class ToDoController {
             throw new ToDoException("ToDo to delete doesn´t exist");
         }
         toDoService.removeToDo(toDo);
-        return new ResponseEntity<Response>(new Response(HttpStatus.OK.value(), "ToDo has been deleted"), HttpStatus.OK);
+        return new ResponseEntity<>(new Response(HttpStatus.OK.value(), "ToDo has been deleted"), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/todo", method = RequestMethod.POST)
@@ -58,7 +58,7 @@ public class ToDoController {
         if (!PayloadValidator.validateCreatePayload(payload)) {
             throw new ToDoException("Payload malformed, id must not be defined");
         }
-        return new ResponseEntity<ToDo>(toDoService.saveToDo(payload), HttpStatus.OK);
+        return new ResponseEntity<>(toDoService.saveToDo(payload), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/todo", method = RequestMethod.PATCH)
@@ -69,7 +69,7 @@ public class ToDoController {
         if (!toDoOpt.isPresent()) {
             throw new ToDoException("ToDo to update doesn´t exist");
         }
-        return new ResponseEntity<ToDo>(toDoService.saveToDo(payload), HttpStatus.OK);
+        return new ResponseEntity<>(toDoService.saveToDo(payload), HttpStatus.OK);
     }
 
 }

@@ -1,7 +1,7 @@
-package com.example;
+package pl.coderslab.jenkins;
 
-import com.example.model.ToDo;
-import com.example.repository.ToDoRepository;
+import pl.coderslab.jenkins.model.ToDo;
+import pl.coderslab.jenkins.repository.ToDoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

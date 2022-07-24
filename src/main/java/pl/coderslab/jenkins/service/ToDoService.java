@@ -1,6 +1,6 @@
-package com.example.service;
+package pl.coderslab.jenkins.service;
 
-import com.example.model.ToDo;
+import pl.coderslab.jenkins.model.ToDo;
 
 import java.util.List;
 import java.util.Optional;

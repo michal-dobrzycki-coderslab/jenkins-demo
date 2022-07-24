@@ -1,6 +1,6 @@
-package com.example.repository;
+package pl.coderslab.jenkins.repository;
 
-import com.example.model.ToDo;
+import pl.coderslab.jenkins.model.ToDo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

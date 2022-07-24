@@ -1,6 +1,6 @@
-package com.example.util;
+package pl.coderslab.jenkins.util;
 
-import com.example.model.ToDo;
+import pl.coderslab.jenkins.model.ToDo;
 
 public class PayloadValidator {
 

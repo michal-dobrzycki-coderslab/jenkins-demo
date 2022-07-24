@@ -1,4 +1,4 @@
-package com.example.model;
+package pl.coderslab.jenkins.model;
 
 public class Response {
 

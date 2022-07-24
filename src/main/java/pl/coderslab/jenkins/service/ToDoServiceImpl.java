@@ -1,7 +1,7 @@
-package com.example.service;
+package pl.coderslab.jenkins.service;
 
-import com.example.model.ToDo;
-import com.example.repository.ToDoRepository;
+import pl.coderslab.jenkins.model.ToDo;
+import pl.coderslab.jenkins.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.model;
+package pl.coderslab.jenkins.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

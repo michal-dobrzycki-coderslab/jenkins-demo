@@ -1,23 +1,24 @@
-package com.example.service;
+package pl.coderslab.jenkins.service;
 
-import com.example.model.ToDo;
-import com.example.repository.ToDoRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.coderslab.jenkins.model.ToDo;
+import pl.coderslab.jenkins.repository.ToDoRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 public class ToDoServiceTest {
 
     @Mock
@@ -26,14 +27,14 @@ public class ToDoServiceTest {
     @InjectMocks
     private ToDoServiceImpl toDoService;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
     public void testGetAllToDo() {
-        List<ToDo> toDoList = new ArrayList<ToDo>();
+        List<ToDo> toDoList = new ArrayList<>();
         toDoList.add(new ToDo(1, "Todo Sample 1", true));
         toDoList.add(new ToDo(2, "Todo Sample 2", true));
         toDoList.add(new ToDo(3, "Todo Sample 3", false));
@@ -51,7 +52,7 @@ public class ToDoServiceTest {
         ToDo result = resultOpt.get();
         assertEquals(1, result.getId());
         assertEquals("Todo Sample 1", result.getText());
-        assertEquals(true, result.isCompleted());
+        assertTrue(result.isCompleted());
     }
 
     @Test
@@ -61,7 +62,7 @@ public class ToDoServiceTest {
         ToDo result = toDoService.saveToDo(toDo);
         assertEquals(8, result.getId());
         assertEquals("Todo Sample 8", result.getText());
-        assertEquals(true, result.isCompleted());
+        assertTrue(result.isCompleted());
     }
 
     @Test

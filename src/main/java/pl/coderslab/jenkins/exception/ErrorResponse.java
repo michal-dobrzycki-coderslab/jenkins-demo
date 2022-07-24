@@ -1,4 +1,4 @@
-package com.example.exception;
+package pl.coderslab.jenkins.exception;
 
 public class ErrorResponse {
 
