@@ -11,5 +11,14 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage('Test') {
+            steps {
+                /* `mvn test` returns non-zero on test failures,
+                * using `true` to allow the Pipeline to continue nonetheless
+                */
+                sh 'mvn test || true'
+                junit '**/target/*.xml'
+            }
+        }
     }
 }
