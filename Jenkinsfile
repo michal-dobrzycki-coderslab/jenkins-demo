@@ -17,7 +17,7 @@ pipeline {
                 * using `true` to allow the Pipeline to continue nonetheless
                 */
                 sh 'mvn test || true'
-                junit '**/target/*.xml'
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
